@@ -1,11 +1,20 @@
 <div class="content">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 order-md-2">
+            <div class="col-md-6 order-md-2" [@animation-banner]="statusBanner">
                 <app-banner></app-banner>
             </div>
             <div class="col-md-6">
-                <app-login></app-login>
+                <div [@animation-form]="statusForm">
+                    <div *ngIf="register; else formlogin" [@animation-form]="statusForm">
+                        <app-register (showScreen)="showScreen($event)"></app-register>
+                    </div>
+                </div>
+                <div [@animation-form]="statusForm">
+                    <ng-template #formlogin>
+                        <app-login (showScreen)="showScreen($event)"></app-login>
+                    </ng-template>
+                </div>
             </div>
         </div>
     </div>
