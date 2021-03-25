@@ -1,5 +1,10 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { Form, FormControl, FormGroup } from '@angular/forms';
+
 export class FormValidators{
+
+    static required(input: FormControl){
+        return (input.value ? null : {obrigatoriedade: "preencha o campo"})
+    }
 
     static equalsTo(otherField:string){
         const validator = (formControl: FormControl)=>{

@@ -5,6 +5,44 @@ body {
     background-color: #f8fafb;
 }
 
+
+/*********************** Forms **************************/
+
+@mixin formInvalid {
+    border: 1px solid red;
+}
+
+@mixin formValid {
+    border: 1px solid green;
+}
+
+input.ng-invalid.ng-touched {
+    @include formInvalid
+}
+
+textarea.ng-invalid.ng-touched {
+    @include formInvalid
+}
+
+select.ng-invalid.ng-touched {
+    @include formInvalid
+}
+
+input.ng-valid.ng-touched {
+    @include formValid
+}
+
+textarea.ng-valid.ng-touched {
+    @include formValid
+}
+
+select.ng-valid.ng-touched {
+    @include formValid
+}
+
+
+/********************************************************/
+
 p {
     color: #b3b3b3;
     font-weight: 300;
