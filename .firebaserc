@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "workspace-social-media": {
+      "hosting": {
+        "workspace-project": [
+          "workspace-social-media"
+        ]
+      }
+    }
+  }
+}

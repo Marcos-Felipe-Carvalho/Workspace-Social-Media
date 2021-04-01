@@ -24,7 +24,7 @@ export class BannerComponent implements OnInit {
 
   public images: Array<Image> = [
     {status: 'visible', url:'../../../assets/images/banner_001.png'},
-    {status: 'hidden', url:'../../../assets/images/banner_002.jpg'},
+    {status: 'hidden', url:'../../../assets/images/banner_002.png'},
     {status: 'hidden', url:'../../../assets/images/banner_003.png'}
   ]
 

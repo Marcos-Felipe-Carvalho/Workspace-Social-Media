@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../authentication.service';
 import { User } from './../../shared/model/user.mode';
 import { FormValidators } from './../../shared/form/form-validators';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
@@ -6,7 +7,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  providers: [AuthenticationService]
 })
 export class RegisterComponent implements OnInit {
 
@@ -23,7 +25,7 @@ export class RegisterComponent implements OnInit {
 
   @Output() public showScreen:EventEmitter<string> = new EventEmitter()
 
-  constructor() { }
+  constructor(private authenticationService:AuthenticationService) { }
 
   ngOnInit(): void {
   }
@@ -33,7 +35,6 @@ export class RegisterComponent implements OnInit {
   }
 
   public registerUser():void{
-    console.log(this.formRegister)
 
     let user:User = new User(
       this.formRegister.value.name,
@@ -44,6 +45,6 @@ export class RegisterComponent implements OnInit {
       this.formRegister.value.confirmPassword
     )
 
-    console.log(user)
+    this.authenticationService.registerUser(user)
   }
 }
