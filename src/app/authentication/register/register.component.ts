@@ -46,5 +46,9 @@ export class RegisterComponent implements OnInit {
     )
 
     this.authenticationService.registerUser(user)
+      .then(()=> {
+        alert("Cadastro realizado com sucesso")
+        this.showLogin()
+      })
   }
 }

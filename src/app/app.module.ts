@@ -11,6 +11,10 @@ import { BannerComponent } from './authentication/banner/banner.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessageErrorComponent } from './shared/form/message-error/message-error.component';
+import { HomeComponent } from './home/home.component';
+import { PostsComponent } from './home/posts/posts.component';
+import { AuthenticationGuard } from './authentication/authentication-guard.service';
+import { MenuHomeComponent } from './home/menu-home/menu-home.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,10 @@ import { MessageErrorComponent } from './shared/form/message-error/message-error
     LoginComponent,
     BannerComponent,
     RegisterComponent,
-    MessageErrorComponent
+    MessageErrorComponent,
+    HomeComponent,
+    PostsComponent,
+    MenuHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,8 @@ import { MessageErrorComponent } from './shared/form/message-error/message-error
     ReactiveFormsModule,
   ],
   providers: [
-    AuthenticationService
+    AuthenticationService,
+    AuthenticationGuard
   ],
   bootstrap: [AppComponent]
 })
