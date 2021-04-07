@@ -1,3 +1,5 @@
+import { UploadProgressService } from './upload-progress.service';
+import { BdService } from './bd.service';
 import { AuthenticationService } from './authentication/authentication.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,6 +17,8 @@ import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './home/posts/posts.component';
 import { AuthenticationGuard } from './authentication/authentication-guard.service';
 import { MenuHomeComponent } from './home/menu-home/menu-home.component';
+import { HeroComponent } from './home/hero/hero.component';
+import { NewPostComponent } from './home/new-post/new-post.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,9 @@ import { MenuHomeComponent } from './home/menu-home/menu-home.component';
     MessageErrorComponent,
     HomeComponent,
     PostsComponent,
-    MenuHomeComponent
+    MenuHomeComponent,
+    HeroComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,9 @@ import { MenuHomeComponent } from './home/menu-home/menu-home.component';
   ],
   providers: [
     AuthenticationService,
-    AuthenticationGuard
+    AuthenticationGuard,
+    BdService,
+    UploadProgressService
   ],
   bootstrap: [AppComponent]
 })
