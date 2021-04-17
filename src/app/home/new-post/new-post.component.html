@@ -1,13 +1,32 @@
 <div class="container">
-    <form [formGroup]="formPost" (ngSubmit)="sendPost()">
-        <div class="form-group" >
-            <label for="title">Título</label>
-            <textarea formControlName="title" class="form-control" id="title" rows="3"></textarea>
+    <div *ngIf="progressPost === 'pending'">
+        <form [formGroup]="formPost"  (ngSubmit)="sendPost()">
+            <div class="form-group" >
+                <label for="title">Título</label>
+                <textarea formControlName="title" class="form-control" id="title" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="file">Example file input</label>
+                <input type="file" accept="image/jpg" class="form-control-file" (change)="prepareImageUpload($event)" id="file">
+              </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        
+    </div>
+    <div *ngIf="progressPost === 'in progress'">
+        {{percentageUpload}}
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': percentageUpload}">
+              {{percentageUpload}}
+            </div>
         </div>
-        <div class="form-group">
-            <label for="file">Example file input</label>
-            <input type="file" accept="image/jpg" class="form-control-file" (change)="prepareImageUpload($event)" id="file">
-          </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
+    <div *ngIf="progressPost === 'concluded'">
+        Publicação realizada com sucesso
+        <div class="progress">
+            <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': percentageUpload}">
+                {{percentageUpload}}
+            </div>
+        </div>
+    </div>
 </div>

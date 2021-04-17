@@ -16,6 +16,9 @@ export class NewPostComponent implements OnInit {
   public email:any;
   private image:any;
 
+  public progressPost:string='pending'
+  public percentageUpload:number=1000
+
   public formPost:FormGroup = new FormGroup({
     "title": new FormControl(null)
   })
@@ -52,10 +55,13 @@ export class NewPostComponent implements OnInit {
       .pipe(takeUntil(toBeContinued))
       .subscribe(
         ()=>{
-          console.log(this.uploadProgress.status)
-          console.log(this.uploadProgress.state)
+
+          this.progressPost = 'in progress'
+
+          this.percentageUpload = Math.round((this.uploadProgress.state.bytesTransferred / this.uploadProgress.state.totalBytes)*100)
 
           if(this.uploadProgress.status === 'concluído'){
+            this.progressPost = 'concluded'
             toBeContinued.next(false)
           }
         }
