@@ -40,8 +40,15 @@ export class BdService {
           )
 
       })
+  }
+  
+  /*Obter publicações*/
 
-
-    /**/
+  public getPosts(email:string):void{
+    firebase.default.database().ref(`posts/${btoa(email)}`)
+      .once('value')
+      .then((snapshot:any)=>{
+        console.log(snapshot.val())
+      })
   }
 }
